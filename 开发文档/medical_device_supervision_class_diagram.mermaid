@@ -1,0 +1,88 @@
+classDiagram
+    
+    class Device {
+        +String deviceId
+        +String deviceName 
+        +String deviceType
+        +String deviceCode
+        +String manufacturer
+        +String registrant
+        +String regCertificate
+        +String status
+        +getDeviceInfo()
+        +updateDevice()
+    }
+
+    class ProductionLicense {
+        +String licenseId
+        +String companyId
+        +String licenseType 
+        +String scope
+        +Date validDate
+        +Date issueDate
+        +String status
+        +applyLicense()
+        +reviewLicense()
+        +issueLicense()
+    }
+
+    class BusinessLicense {
+        +String licenseId
+        +String companyId
+        +String licenseType
+        +String scope
+        +Date validDate
+        +Date issueDate
+        +String status
+        +applyLicense()
+        +reviewLicense()
+        +issueLicense()
+    }
+
+    class Inspection {
+        +String inspectionId
+        +String companyId
+        +String checkType
+        +Date checkDate
+        +String inspector
+        +String result
+        +List issues
+        +List actions
+        +createInspection()
+        +executeInspection()
+        +reportResult()
+    }
+
+    class AdverseEvent {
+        +String eventId
+        +String deviceId
+        +String reportType
+        +Date reportDate
+        +String reporter
+        +String description
+        +String investigation
+        +String result
+        +List measures
+        +reportEvent()
+        +investigateEvent()
+        +handleEvent()
+    }
+
+    class RiskMonitor {
+        +String alertId
+        +String riskType
+        +String riskLevel
+        +Object content
+        +Date alertTime
+        +detectRisk()
+        +assessRisk() 
+        +alertRisk()
+        +handleRisk()
+    }
+
+    Device -- ProductionLicense
+    Device -- BusinessLicense
+    Device -- Inspection
+    Device -- AdverseEvent
+    AdverseEvent -- RiskMonitor
+    Inspection -- RiskMonitor

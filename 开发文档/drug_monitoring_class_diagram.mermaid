@@ -1,0 +1,81 @@
+classDiagram
+
+    class DataCollector {
+        +collectStructuredData()
+        +collectUnstructuredData() 
+        +collectRealtimeData()
+        +validateData()
+    }
+
+    class DataProcessor {
+        +cleanData()
+        +transformData()
+        +loadData()
+        +validateQuality()
+    }
+
+    class DataService {
+        +createAPI()
+        +shareData()
+        +openData()
+        +manageAccess()
+    }
+
+    class DataSecurity {
+        +classifyData()
+        +encryptData() 
+        +controlAccess()
+        +auditLog()
+    }
+
+    class LicenseManager {
+        +applyLicense()
+        +reviewLicense()
+        +issueLicense()
+        +revokeLicense()
+    }
+
+    class SupervisionManager {
+        +planInspection()
+        +executeInspection()
+        +recordResult()
+        +followUpAction()
+    }
+
+    class RiskMonitor {
+        +detectRisk()
+        +assessRisk()
+        +alertRisk()
+        +trackRisk() 
+    }
+
+    class ComplaintManager {
+        +receiveComplaint()
+        +processComplaint() 
+        +respondComplaint()
+        +archiveComplaint()
+    }
+
+    class PunishmentManager {
+        +investigateCase()
+        +makePunishment()
+        +executePunishment()
+        +recordPunishment()
+    }
+
+    class CreditManager {
+        +evaluateCredit()
+        +updateCredit()
+        +queryCredit()
+        +publishCredit()
+    }
+
+    DataCollector --> DataProcessor
+    DataProcessor --> DataService
+    DataService --> DataSecurity
+    
+    LicenseManager --> SupervisionManager
+    SupervisionManager --> RiskMonitor
+    RiskMonitor --> ComplaintManager
+    ComplaintManager --> PunishmentManager
+    PunishmentManager --> CreditManager

@@ -1,0 +1,41 @@
+sequenceDiagram
+    participant DC as DataCollector
+    participant DP as DataProcessor  
+    participant DS as DataService
+    participant LM as LicenseManager
+    participant SM as SupervisionManager
+    participant RM as RiskMonitor
+    participant CM as ComplaintManager
+    participant PM as PunishmentManager
+
+    DC->>DP: 采集数据
+    DP->>DS: 处理数据
+    DS->>LM: 提供数据服务
+    
+    LM->>SM: 发起监督检查
+    SM->>RM: 监测风险
+    
+    alt 发现风险
+        RM->>CM: 转为投诉处理
+        CM->>PM: 启动处罚流程
+    else 未发现风险
+        RM->>SM: 继续监控
+    end
+
+    par 数据同步
+        DC->>DP: 实时数据采集
+        DP->>DS: 数据处理
+        DS->>RM: 更新风险信息
+    end
+
+    loop 定期检查
+        SM->>RM: 风险评估
+        RM->>SM: 反馈结果
+    end
+
+    Note right of RM: 风险监测持续进行
+
+    opt 应急处置
+        RM->>SM: 发出预警
+        SM->>PM: 紧急处理
+    end

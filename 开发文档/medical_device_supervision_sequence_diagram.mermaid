@@ -1,0 +1,46 @@
+sequenceDiagram
+    participant C as 企业
+    participant R as 注册备案
+    participant L as 许可备案
+    participant I as 监督检查
+    participant A as 不良事件
+    participant M as 风险监测
+    participant D as 数据中台
+
+    C->>R: 提交注册/备案申请
+    R->>D: 同步注册信息
+    R-->>C: 返回申请结果
+
+    C->>L: 提交许可/备案申请
+    L->>D: 同步许可信息
+    L-->>C: 返回申请结果
+
+    I->>D: 获取检查任务
+    I->>C: 开展现场检查
+    I->>D: 上报检查结果
+
+    C->>A: 报告不良事件
+    A->>D: 记录事件信息
+    A->>M: 风险评估
+
+    alt 发现风险
+        M->>I: 发起专项检查
+        I->>C: 开展检查
+        I->>D: 上报处置结果
+    else 正常监测
+        M->>D: 持续监测
+    end
+
+    loop 定期同步
+        D->>R: 同步注册数据
+        D->>L: 同步许可数据
+        D->>I: 同步检查数据
+        D->>A: 同步事件数据
+        D->>M: 同步风险数据
+    end
+
+    opt 应急处置
+        M->>I: 发出预警
+        I->>C: 紧急处置
+        I->>D: 反馈结果
+    end

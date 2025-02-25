@@ -1,0 +1,100 @@
+classDiagram
+
+    %% 数据共享服务核心类
+    class DataSharingService {
+        +registerDataSource()
+        +collectData()
+        +processData()
+        +provideDataService()
+    }
+
+    %% 药品监管核心类
+    class DrugSupervision {
+        +manageLicense()
+        +superviseProduction()
+        +controlQuality()
+        +monitorRisk()
+    }
+
+    %% 医疗器械监管核心类
+    class MedicalDeviceSupervision {
+        +manageRegistration()
+        +superviseBusiness()
+        +checkQuality()
+        +handleIncident()
+    }
+
+    %% 化妆品监管核心类
+    class CosmeticsSupervision {
+        +manageRegistration()
+        +superviseBusiness()
+        +recallProduct()
+        +monitorRisk()
+    }
+
+    %% 共享功能类
+    class CommonService {
+        +userManagement()
+        +authManagement()
+        +logManagement()
+        +auditManagement()
+    }
+
+    %% 系统间关系
+    DataSharingService -- DrugSupervision
+    DataSharingService -- MedicalDeviceSupervision
+    DataSharingService -- CosmeticsSupervision
+    CommonService -- DrugSupervision
+    CommonService -- MedicalDeviceSupervision
+    CommonService -- CosmeticsSupervision
+
+    %% 各监管子系统类
+    class DrugLicense {
+        +String licenseId
+        +applyLicense()
+        +reviewLicense()
+        +issueLicense()
+    }
+
+    class DrugInspection {
+        +String inspectionId
+        +planInspection()
+        +executeInspection()
+        +reportResult()
+    }
+
+    class DeviceRegistration {
+        +String registrationId
+        +applyRegistration()
+        +reviewRegistration()
+        +approveRegistration()
+    }
+
+    class DeviceQuality {
+        +String qualityId
+        +checkQuality()
+        +handleIssue()
+        +trackProgress()
+    }
+
+    class CosmeticsRecord {
+        +String recordId
+        +submitRecord()
+        +reviewRecord()
+        +publishRecord()
+    }
+
+    class CosmeticsRecall {
+        +String recallId
+        +initiateRecall()
+        +executeRecall()
+        +confirmRecall()
+    }
+
+    %% 子系统关系
+    DrugSupervision -- DrugLicense
+    DrugSupervision -- DrugInspection
+    MedicalDeviceSupervision -- DeviceRegistration
+    MedicalDeviceSupervision -- DeviceQuality
+    CosmeticsSupervision -- CosmeticsRecord
+    CosmeticsSupervision -- CosmeticsRecall

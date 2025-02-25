@@ -1,0 +1,60 @@
+// 全局样式
+:root {
+  --primary-color: #409eff;
+  --success-color: #67c23a;
+  --warning-color: #e6a23c;
+  --danger-color: #f56c6c;
+  --info-color: #909399;
+  --text-color: #303133;
+  --text-color-secondary: #606266;
+  --text-color-placeholder: #c0c4cc;
+  --border-color: #dcdfe6;
+  --border-color-light: #e4e7ed;
+  --background-color: #f5f7fa;
+}
+
+// 布局样式
+.app-container {
+  padding: 20px;
+}
+
+// 表格样式
+.table-container {
+  margin-top: 20px;
+}
+
+// 表单样式
+.form-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+// 搜索表单样式
+.search-form {
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: var(--background-color);
+  border-radius: 4px;
+
+  .el-form-item {
+    margin-bottom: 0;
+  }
+}
+
+// 操作按钮样式
+.operation-container {
+  margin-bottom: 20px;
+
+  .el-button {
+    margin-right: 10px;
+  }
+}
+
+// 分页样式
+.pagination-container {
+  margin-top: 20px;
+  text-align: right;
+} 

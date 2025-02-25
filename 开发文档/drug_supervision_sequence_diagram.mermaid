@@ -1,0 +1,44 @@
+sequenceDiagram
+    participant C as 企业
+    participant L as 许可管理
+    participant I as 监管检查
+    participant S as 质量抽检
+    participant R as 风险监测
+    participant D as 数据中台
+
+    C->>L: 提交许可申请
+    L->>D: 同步许可信息
+    L-->>C: 返回申请结果
+
+    I->>D: 获取检查任务
+    I->>C: 开展现场检查
+    I->>D: 上报检查结果
+
+    S->>D: 获取抽检任务
+    S->>C: 开展样品抽检
+    S->>D: 上报检验结果
+
+    D->>R: 数据分析
+    
+    alt 发现风险
+        R->>I: 发起专项检查
+        I->>C: 开展检查
+        I->>D: 上报处置结果
+    else 正常监测
+        R->>D: 持续监测
+    end
+
+    loop 定期同步
+        D->>L: 同步许可数据
+        D->>I: 同步检查数据
+        D->>S: 同步抽检数据
+        D->>R: 同步风险数据
+    end
+    
+    Note right of D: 数据实时同步更新
+
+    opt 应急处置
+        R->>I: 发出预警
+        I->>C: 紧急处置
+        I->>D: 反馈结果
+    end

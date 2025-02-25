@@ -1,0 +1,6 @@
+{
+  "devDependencies": {
+    "@types/axios": "^0.14.4",
+    "@types/vue-router": "^2.0.0"
+  }
+}

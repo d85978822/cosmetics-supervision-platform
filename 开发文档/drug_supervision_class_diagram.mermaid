@@ -1,0 +1,84 @@
+classDiagram
+    
+    class DrugInfo {
+        +String drugId
+        +String genericName
+        +String tradeName
+        +String dosageForm
+        +String specification
+        +String approvalNumber
+        +String manufacturer
+        +String status
+        +getDrugInfo()
+        +updateDrugInfo()
+    }
+
+    class License {
+        +String licenseId
+        +String companyId
+        +String licenseType
+        +String scope
+        +Date validDate
+        +Date issueDate
+        +String status
+        +applyLicense()
+        +reviewLicense()
+        +issueLicense()
+        +revokeLicense()
+    }
+
+    class Inspection {
+        +String inspectionId
+        +String companyId
+        +String checkType
+        +Date checkDate
+        +String inspector
+        +String result
+        +List issues
+        +List actions
+        +createInspection()
+        +executeInspection()
+        +reportResult()
+    }
+
+    class Sampling {
+        +String taskId
+        +String drugId
+        +String batchNo
+        +Integer quantity
+        +Object result
+        +String conclusion
+        +createTask()
+        +executeSampling()
+        +reportResult()
+    }
+
+    class RiskMonitor {
+        +String alertId
+        +String riskType
+        +String riskLevel
+        +Object content
+        +Date alertTime
+        +detectRisk()
+        +assessRisk()
+        +alertRisk()
+        +handleRisk()
+    }
+
+    class DataSync {
+        +String syncId
+        +String dataType
+        +Object data
+        +Date syncTime
+        +String status
+        +syncBasicData()
+        +syncBusinessData()
+        +checkStatus()
+    }
+
+    DrugInfo -- License
+    License -- Inspection
+    DrugInfo -- Sampling
+    Sampling -- RiskMonitor
+    Inspection -- RiskMonitor
+    RiskMonitor -- DataSync
